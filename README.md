@@ -83,7 +83,7 @@ adb backup –f ./wx.ab com.tencent.mm
 java -jar abe.jar unpack wx.ab wx.tar.gz
 tar -zxvf wx.tar.gz
 ```
-* DB解密密钥获取
+* 获取DB解密密钥
  ```
  Android数据库密码一般是手机IMEI+微信UIN 两部分md5后取前7位
  
