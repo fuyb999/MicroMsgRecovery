@@ -98,7 +98,7 @@ UIN:
 ```
 docker run --rm -v $(pwd):/wcdb  greycodee/wcdb-sqlcipher -f DB名字 -k 解密密钥
 ```
-* 恢复删除记录（FTS5IndexMicroMsg.db）
+* 从索引库恢复被删除的消息(FTS5IndexMicroMsg.db）  
  https://www.bilibili.com/read/cv15864412  
  ```
  微信版本<7
