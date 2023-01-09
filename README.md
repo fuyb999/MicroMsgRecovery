@@ -63,5 +63,46 @@ Note:
 SQLiteRet relies on the principle that deleted data can be found in the file's free (unallocated) space. Therefore, the chance of recovering data from databases which have been fully vacuumed and defragmented is minimal.
 
 
-  
+不root获取db文件
+--------------
+https://github.com/greycodee/wechat-backup  
+https://www.pansafe.com/a/news/2016/0909/138.html  
+https://github.com/nelenkov/android-backup-extractor/releases  
+
+ **获取db文件,adb version>=1.0.31 **
+```
+adb version
+
+adb devices
+adb shell pm uninstall –k com.tencent.mm
+adb install -r -d weixin5.apk
+adb backup –f ./wx.ab com.tencent.mm
+```
+ **解包 **
+```
+java -jar abe.jar unpack wx.ab wx.tar.gz
+tar -zxvf wx.tar.gz
+```
+ **DB解密密钥获取 **
+ ```
+ Android数据库密码一般是手机IMEI+微信UIN 两部分md5后取前7位
+ 
+IMEI： 
+    拨号盘输入 *#06# 可以获取（双卡手机可能有3个， 可以挨个尝试下，另外有人说IMEI改成了，1234567890ABCDEF，经测试我这里不是）
+UIN:
+    搜索auth_info_key_prefs.xml文件，取_auth_uin的值，符号也要
+    
+ ```
+ 
+ **解密EnMicroMsg.db，WxFileIndex.db **
+```
+docker run --rm -v $(pwd):/wcdb  greycodee/wcdb-sqlcipher -f DB名字 -k 解密密钥
+```
+ **恢复删除记录（FTS5IndexMicroMsg.db）**
+ https://www.bilibili.com/read/cv15864412  
+ ```
+ 微信版本<7
+ python3 sqliteret.py FTS5IndexMicroMsg.db
+ ```
+
   
