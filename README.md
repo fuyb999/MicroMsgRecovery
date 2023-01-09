@@ -119,6 +119,7 @@ docker run --rm -v $(pwd):/wcdb  greycodee/wcdb-sqlcipher -f EnMicroMsg.db -k a8
 * 解析FTS5IndexMicroMsg.db时出现 no such tokenizer: mmSimple  
 ```
 PRAGMA writable_schema = ON;  
-DELETE FROM sqlite_master WHERE type = 'table' AND name != 'FTS5IndexMessage_content' and name !='FTS5MetaMessage';
+# sqlite_master.type: index and table
+DELETE FROM sqlite_master WHERE  name != 'FTS5IndexMessage_content' and name !='FTS5MetaMessage';
 ```
   
