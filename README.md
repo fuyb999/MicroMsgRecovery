@@ -69,7 +69,7 @@ https://github.com/greycodee/wechat-backup
 https://www.pansafe.com/a/news/2016/0909/138.html  
 https://github.com/nelenkov/android-backup-extractor/releases  
 
-  **获取db文件,adb version>=1.0.31 **
+* 获取db文件,adb version>=1.0.31
 ```
 adb version
 
@@ -78,12 +78,12 @@ adb shell pm uninstall –k com.tencent.mm
 adb install -r -d weixin5.apk
 adb backup –f ./wx.ab com.tencent.mm
 ```
-  **解包 **
+* 解包
 ```
 java -jar abe.jar unpack wx.ab wx.tar.gz
 tar -zxvf wx.tar.gz
 ```
-  **DB解密密钥获取 **
+* DB解密密钥获取
  ```
  Android数据库密码一般是手机IMEI+微信UIN 两部分md5后取前7位
  
@@ -94,11 +94,11 @@ UIN:
     
  ```
  
-  **解密EnMicroMsg.db，WxFileIndex.db **
+* 解密EnMicroMsg.db，WxFileIndex.db
 ```
 docker run --rm -v $(pwd):/wcdb  greycodee/wcdb-sqlcipher -f DB名字 -k 解密密钥
 ```
-  **恢复删除记录（FTS5IndexMicroMsg.db）**
+* 恢复删除记录（FTS5IndexMicroMsg.db）
  https://www.bilibili.com/read/cv15864412  
  ```
  微信版本<7
