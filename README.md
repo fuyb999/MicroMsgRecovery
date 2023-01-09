@@ -100,10 +100,20 @@ docker run --rm -v $(pwd):/wcdb  greycodee/wcdb-sqlcipher -f DB名字 -k 解密�
 ```
 * 从索引库恢复被删除的消息(FTS5IndexMicroMsg.db）  
  https://www.bilibili.com/read/cv15864412  
- https://www.louyue.com/weixinhuifuqi.htm  
+ 方案一：
  ```
  微信版本<7
  python3 sqliteret.py FTS5IndexMicroMsg.db
+ ```
+ 方案二：
+ https://www.louyue.com/weixinhuifuqi.htm  
+ 获取语音、视频、图片等缓存文件(/storage/emulated/0/Android/data/com.tencent.mm/MicroMsg 或者 /storage/emulated/0/tencent/MicroMsg)：
+ ```
+ adb shell
+ cd /storage/emulated/0/Android/data/com.tencent.mm/
+ tar -czvf MicroMsg.tar.gz MicroMsg
+ adb pull /storage/emulated/0/Android/data/com.tencent.mm/MicroMsg.tar.gz .
+ 
  ```
 
   
