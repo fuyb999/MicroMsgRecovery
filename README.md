@@ -96,7 +96,7 @@ UIN:
  
 * 解密EnMicroMsg.db，WxFileIndex.db
 ```
-docker run --rm -v $(pwd):/wcdb  greycodee/wcdb-sqlcipher -f DB名字 -k 解密密钥
+docker run --rm -v $(pwd):/wcdb  greycodee/wcdb-sqlcipher -f EnMicroMsg.db -k a8b88c
 ```
 * 从索引库恢复被删除的消息(FTS5IndexMicroMsg.db）  
  https://www.bilibili.com/read/cv15864412  
